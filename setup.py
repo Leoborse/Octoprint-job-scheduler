@@ -1,6 +1,4 @@
 # coding=utf-8
-from __future__ import absolute_import
-
 # https://codeload.github.com/Leoborse/Octoprint-job-scheduler/zip/master
 
 # The plugin's identifier, has to be unique
@@ -8,7 +6,7 @@ from setuptools import setup
 plugin_identifier = "job_scheduler"
 plugin_package = "job_scheduler"
 plugin_name = "Job-Scheduler"
-plugin_version = "0.0.3"
+plugin_version = "0.0.4"
 plugin_description = """A job scheduler for OctoPrint"""
 plugin_author = "Leonardo Borselli"
 plugin_author_email = "leonardo.borselli@gmail.com"
@@ -76,21 +74,3 @@ if len(additional_setup_parameters):
         setup_parameters, additional_setup_parameters)
 
 setup(**setup_parameters)
-
-
-
-
-import octoprint.plugin
-
-class OctoprintJobSchedulerPlugin(
-        octoprint.plugin.StartupPlugin,
-        octoprint.plugin.TemplatePlugin,
-        octoprint.plugin.SettingsPlugin):
-    def on_after_startup(self):
-        self._logger.info("Hello World! (more: %s)" % self._settings.get(["url"]))
-
-    def get_settings_defaults(self):
-        return dict(url="https://en.wikipedia.org/wiki/Hello_world")
-
-__plugin_name__ = "Job-Scheduler"
-__plugin_implementation__ = OctoprintJobSchedulerPlugin()
