@@ -1,3 +1,5 @@
+# coding=utf-8
+
 plugin_identifier = "Job Scheduler"
 plugin_package = "job_scheduler"
 plugin_name = "OctoPrint-Job-Scheduler"

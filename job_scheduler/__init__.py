@@ -11,3 +11,5 @@ __plugin_name__ = "OctoPrint-Job-Scheduler"
 __plugin_version__ = "1.0.0"
 __plugin_description__ = "A job scheduler for OctoPrint"
 __plugin_implementation__ = OctoprintJobSchedulerPlugin()
+__plugin_author__ = "Leonardo Borselli"
+__plugin_url__ = "https://https://github.com/Leoborse/Octoprint-job-scheduler.git"
