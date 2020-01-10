@@ -10,4 +10,5 @@ class OctoprintJobSchedulerPlugin(
     def on_after_startup(self):
         self._logger.info("Job-Scheduler!")
 
+__plugin_name__ = "Job-Scheduler"
 __plugin_implementation__ = OctoprintJobSchedulerPlugin()
