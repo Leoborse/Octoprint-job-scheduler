@@ -1,3 +1,3 @@
-# Octoprint-job-scheduler
+# Octoprint Job Scheduler
 
 Under developement
