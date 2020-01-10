@@ -1,4 +1,5 @@
 # coding=utf-8
+from __future__ import absolute_import
 
 # https://codeload.github.com/Leoborse/Octoprint-job-scheduler/zip/master
 
@@ -78,7 +79,6 @@ setup(**setup_parameters)
 
 
 
-from __future__ import absolute_import
 
 import octoprint.plugin
 
