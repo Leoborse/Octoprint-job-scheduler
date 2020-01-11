@@ -14,7 +14,7 @@ class JobSchedulerPlugin(
         self._logger.info("Job Scheduler! (more: %s)" % self._settings.get(["url"]))
 
     def get_settings_defaults(self):
-        return dict(url="/static/img/foto.jpg")
+        return dict(url="/static/img/foto.jpg",day=8,night=21)
 
     def get_template_configs(self):
 		return [
@@ -25,7 +25,7 @@ class JobSchedulerPlugin(
 def get_implementation_class():
 	return JobSchedulerPlugin()
 
-__plugin_name__ = "Job-Scheduler"
+__plugin_name__ = "Job Scheduler"
 __plugin_implementation__ = get_implementation_class()
 __plugin_hooks__ = {}
 #	"octoprint.plugin.softwareupdate.check_config": __plugin_implementation__.get_update_information,
