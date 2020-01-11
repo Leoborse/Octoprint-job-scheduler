@@ -20,6 +20,6 @@ def get_implementation_class():
 __plugin_name__ = "Job-Scheduler"
 __plugin_implementation__ = get_implementation_class()
 __plugin_hooks__ = {
-	"octoprint.plugin.softwareupdate.check_config": __plugin_implementation__.get_update_information,
-	"octoprint.server.http.routes": __plugin_implementation__.route_hook
+#	"octoprint.plugin.softwareupdate.check_config": __plugin_implementation__.get_update_information,
+#	"octoprint.server.http.routes": __plugin_implementation__.route_hook
 }
