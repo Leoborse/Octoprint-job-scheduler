@@ -13,8 +13,10 @@ class JobSchedulerPlugin(
     def get_settings_defaults(self):
         return dict(url="https://en.wikipedia.org/wiki/Hello_world")
 
-
-
+    def get_template_configs(self):
+		return [
+			dict(type="navbar", template="jobscheduler_navbar.jinja2")
+		]
 
 def get_implementation_class():
 	return JobSchedulerPlugin()
