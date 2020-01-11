@@ -3,8 +3,8 @@
 
 # The plugin's identifier, has to be unique
 from setuptools import setup
-plugin_identifier = "job_scheduler"
-plugin_package = "job_scheduler"
+plugin_identifier = "jobscheduler"
+plugin_package = "jobscheduler"
 plugin_name = "Job-Scheduler"
 plugin_version = "0.1.0"
 plugin_description = """A job scheduler for OctoPrint"""
