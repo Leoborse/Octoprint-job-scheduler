@@ -18,7 +18,8 @@ class JobSchedulerPlugin(
 
     def get_template_configs(self):
 		return [
-			dict(type="navbar", custom_bindings=False)
+			dict(type="navbar", custom_bindings=false),
+			dict(type="settings", custom_bindings=false)
 		]
 
 def get_implementation_class():

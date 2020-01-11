@@ -1,3 +1,9 @@
-# Octoprint Job Scheduler
+# Octoprint Job-Scheduler
 
-Under developement
+**TODO:** Under developement.
+
+## Setup
+
+Install via the bundled [Plugin Manager] using this URL:
+
+    https://codeload.github.com/Leoborse/Octoprint-job-scheduler/zip/master
