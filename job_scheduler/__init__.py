@@ -15,7 +15,7 @@ class JobSchedulerPlugin(
 
     def get_template_configs(self):
 		return [
-			dict(type="navbar", template="jobscheduler_navbar.jinja2")
+			dict(type="navbar", template="job_scheduler_navbar.jinja2")
 		]
 
 def get_implementation_class():
