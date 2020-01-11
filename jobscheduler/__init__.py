@@ -14,7 +14,7 @@ class JobSchedulerPlugin(
         self._logger.info("Job Scheduler! (more: %s)" % self._settings.get(["url"]))
 
     def get_settings_defaults(self):
-        return dict(url="https://en.wikipedia.org/wiki/Hello_world")
+        return dict(url="/static/img/foto.jpg")
 
     def get_template_configs(self):
 		return [

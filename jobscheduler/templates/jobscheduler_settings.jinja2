@@ -1,8 +1,20 @@
 <form class="form-horizontal">
-    <div class="control-group">
-        <label class="control-label">URL</label>
-        <div class="controls">
-            <input type="text" class="input-block-level" data-bind="value: https://servizi.toscana.it">
-        </div>
-    </div>
+  <div class="control-group">
+      <label class="control-label">{{ _('URL') }}</label>
+      <div class="controls">
+          <input type="text" class="input-block-level" data-bind="value: settings.plugins.jobscheduler.url">
+      </div>
+  </div>
+  <div class="control-group">
+      <label class="control-label">{{ _('DAY') }}</label>
+      <div class="controls">
+          <input type="text" class="input-block-level" data-bind="value: settings.plugins.jobscheduler.day">
+      </div>
+  </div>
+  <div class="control-group">
+      <label class="control-label">{{ _('NIGHT') }}</label>
+      <div class="controls">
+          <input type="text" class="input-block-level" data-bind="value: settings.plugins.jobscheduler.night">
+      </div>
+  </div>
 </form>
