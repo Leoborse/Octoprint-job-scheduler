@@ -2,25 +2,30 @@
   <h3>Job scheduling and pausing over nigth</h3>
   <ul>
     <li>Specify job start time for the currently selected GCODE file</li>
-    <li>Specify day working time (pause on night)</li>
+    <li>Specify day working time (pause on night)
+      <div class="control-group col-3">
+          <label class="control-label"><i class="fa fa-sun-o"></i></label>
+          <div class="controls">
+              <input type="text" class="input-block-level" data-bind="value: settings.plugins.jobscheduler.day">
+          </div>
+      </div>
+      <div class="control-group col-3">
+          <label class="control-label"><i class="fa fa-moon-o"></i></label>
+          <div class="controls">
+              <input type="text" class="input-block-level" data-bind="value: settings.plugins.jobscheduler.night">
+          </div>
+      </div>
+    </li>
+
+    <li>Specify the path for the foto file
+      <div class="control-group">
+          <label class="control-label"><i class="fa fa-camera"></i></label>
+          <div class="controls">
+              <input type="text" class="input-block-level" data-bind="value: settings.plugins.jobscheduler.url">
+          </div>
+      </div>
+    </li>
   </ul>
-  <div class="control-group">
-      <label class="control-label"><i class="fa fa-camera"></i></label>
-      <div class="controls">
-          <input type="text" class="input-block-level" data-bind="value: settings.plugins.jobscheduler.url">
-      </div>
-  </div>
-  <div class="control-group col-3">
-      <label class="control-label"><i class="fa fa-sun-o"></i></label>
-      <div class="controls">
-          <input type="text" class="input-block-level" data-bind="value: settings.plugins.jobscheduler.day">
-      </div>
-  </div>
-  <div class="control-group col-3">
-      <label class="control-label"><i class="fa fa-moon-o"></i></label>
-      <div class="controls">
-          <input type="text" class="input-block-level" data-bind="value: settings.plugins.jobscheduler.night">
-      </div>
-  </div>
+
 
 </form>
