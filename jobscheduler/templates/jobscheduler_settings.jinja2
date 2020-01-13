@@ -1,46 +1,39 @@
 <form class="form-horizontal">
   <h3>Job scheduling and pausing over nigth</h3>
-  <p>Specify job start time for the currently selected GCODE file</p>
-  <div class="control-group col-md-6">
-    <div class="checkbox">
-      <div class="controls">
-        <input type="checkbox" value="">
-      </div>
-      <label class="control-label">Enable scheduled print job</label>
-    </div>
+  <div class="controls">
+    <label class="checkbox">Enable</label>
+    <input type="checkbox" data-bind="checked: settings.plugins.jobscheduler.pluginenabled">
   </div>
-  <div class="control-group col-md-6">
+
+  <h3>Settings</h3>
+  <div class="control-group">
+    <label class="checkbox">Enable scheduled print job</label>
+    <div class="controls">
+      <input type="checkbox" data-bind="checked: settings.plugins.jobscheduler.startenabled">
+    </div>
+
     <label class="control-label"><i class="fa fa-play"></i></label>
     <div class="controls">
       <input type="text" class="input-block-level" data-bind="value: settings.plugins.jobscheduler.start">
     </div>
   </div>
 
-  <ul>
-    <li>Specify day working time (pause on night)
-      <div class="control-group col-md-3">
-          <label class="control-label"><i class="fa fa-sun-o"></i></label>
-          <div class="controls">
-              <input type="text" class="input-block-level" data-bind="value: settings.plugins.jobscheduler.day">
-          </div>
-      </div>
-      <div class="control-group col-md-3">
-          <label class="control-label"><i class="fa fa-moon-o"></i></label>
-          <div class="controls">
-              <input type="text" class="input-block-level" data-bind="value: settings.plugins.jobscheduler.night">
-          </div>
-      </div>
-    </li>
+  <h3>Specify day working time (pause on night)</h3>
+  <div class="control-group">
+    <label class="checkbox">Enable pause over night</label>
+    <div class="controls">
+      <input type="checkbox" data-bind="checked: settings.plugins.jobscheduler.pauseenabled">
+    </div>
 
-    <li>Specify the path for the foto file
-      <div class="control-group">
-          <label class="control-label"><i class="fa fa-camera"></i></label>
-          <div class="controls">
-              <input type="text" class="input-block-level" data-bind="value: settings.plugins.jobscheduler.url">
-          </div>
-      </div>
-    </li>
-  </ul>
+    <label class="control-label"><i class="fa fa-sun-o"></i></label>
+    <div class="controls">
+      <input type="text" class="input-block-level" data-bind="value: settings.plugins.jobscheduler.day">
+    </div>
 
+    <label class="control-label"><i class="fa fa-moon-o"></i></label>
+    <div class="controls">
+      <input type="text" class="input-block-level" data-bind="value: settings.plugins.jobscheduler.night">
+    </div>
+  </div>
 
 </form>
