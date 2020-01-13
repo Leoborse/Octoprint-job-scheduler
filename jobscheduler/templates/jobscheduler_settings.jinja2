@@ -1,7 +1,7 @@
 <form class="form-horizontal">
   <h3>Job scheduling and pausing over nigth</h3>
   <p>Specify job start time for the currently selected GCODE file</p>
-  <div class="control-group col-3">
+  <div class="control-group">
     <div class="checkbox">
       <div class="controls">
         <input type="checkbox" value="">
@@ -9,7 +9,7 @@
       <label class="control-label">Enable scheduled print job</label>
     </div>
   </div>
-  <div class="control-group col-3">
+  <div class="control-group">
     <label class="control-label"><i class="fa fa-play"></i></label>
     <div class="controls">
       <input type="text" class="input-block-level" data-bind="value: settings.plugins.jobscheduler.start">
@@ -18,13 +18,13 @@
 
   <ul>
     <li>Specify day working time (pause on night)
-      <div class="control-group col-3">
+      <div class="control-group col-md-3">
           <label class="control-label"><i class="fa fa-sun-o"></i></label>
           <div class="controls">
               <input type="text" class="input-block-level" data-bind="value: settings.plugins.jobscheduler.day">
           </div>
       </div>
-      <div class="control-group col-3">
+      <div class="control-group col-md-3">
           <label class="control-label"><i class="fa fa-moon-o"></i></label>
           <div class="controls">
               <input type="text" class="input-block-level" data-bind="value: settings.plugins.jobscheduler.night">
