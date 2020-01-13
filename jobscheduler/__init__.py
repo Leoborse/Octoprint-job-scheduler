@@ -25,7 +25,7 @@ class JobSchedulerPlugin(
 def get_implementation_class():
 	return JobSchedulerPlugin()
 
-__plugin_name__ = "Job Scheduler"
+__plugin_name__ = "A Job Scheduler"
 __plugin_implementation__ = get_implementation_class()
 __plugin_hooks__ = {}
 #	"octoprint.plugin.softwareupdate.check_config": __plugin_implementation__.get_update_information,
