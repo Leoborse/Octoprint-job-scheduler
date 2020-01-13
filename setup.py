@@ -1,5 +1,6 @@
 # coding=utf-8
 
+
 # The plugin's identifier, has to be unique
 from setuptools import setup
 plugin_identifier = "jobscheduler"
