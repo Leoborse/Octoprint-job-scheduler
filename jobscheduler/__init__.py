@@ -8,7 +8,8 @@ import octoprint.plugin
 class JobSchedulerPlugin(
         octoprint.plugin.StartupPlugin,
         octoprint.plugin.TemplatePlugin,
-        octoprint.plugin.SettingsPlugin):
+        octoprint.plugin.SettingsPlugin,
+        octoprint.plugin.AssetPlugin):
     def on_after_startup(self):
         self._logger.info("Job Scheduler! (Started: %s)")
 
