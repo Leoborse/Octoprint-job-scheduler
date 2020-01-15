@@ -33,7 +33,8 @@ class JobSchedulerPlugin(
     def get_assets(self):
 		return dict(
 			js=["js/jobscheduler.js"],
-			css=["css/jobscheduler.css"]
+			css=["css/jobscheduler.css"],
+            less=[]
 		)
 
 def get_implementation_class():
