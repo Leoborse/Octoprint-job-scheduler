@@ -30,6 +30,12 @@ class JobSchedulerPlugin(
 			dict(type="settings", custom_bindings=False)
 		]
 
+    def get_assets(self):
+		return dict(
+			js=["js/jobscheduler.js"],
+			css=["css/jobscheduler.css"]
+		)
+
 def get_implementation_class():
 	return JobSchedulerPlugin()
 
