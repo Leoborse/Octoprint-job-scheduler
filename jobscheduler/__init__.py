@@ -10,7 +10,7 @@ class JobSchedulerPlugin(
         octoprint.plugin.TemplatePlugin,
         octoprint.plugin.SettingsPlugin):
     def on_after_startup(self):
-        self._logger.info("Job Scheduler! (more: %s)" % self._settings.get(["url"]))
+        self._logger.info("Job Scheduler! (Started: %s)")
 
     def get_settings_defaults(self):
         return dict(
