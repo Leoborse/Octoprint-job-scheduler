@@ -13,13 +13,13 @@ class JobSchedulerPlugin(
         self._logger.info("Job Scheduler! (Started: %s)")
 
     def get_settings_defaults(self):
-        return dict(
 #            startenabled=True,
-            starttime=7,
 #            pauseenabled=True,
+#            telegramenabled=True,
+        return dict(
+            starttime=7,
             pauseday=8,
             pausenight=21,
-#            telegramenabled=True,
             telegramtoken='aaa:bbbbbbbbb....',
             telegramchatid=123456789
         )
