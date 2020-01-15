@@ -3,7 +3,6 @@
 # https://codeload.github.com/Leoborse/Octoprint-job-scheduler/zip/master
 
 from __future__ import absolute_import
-
 import octoprint.plugin
 
 class JobSchedulerPlugin(
