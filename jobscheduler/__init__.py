@@ -13,7 +13,17 @@ class JobSchedulerPlugin(
         self._logger.info("Job Scheduler! (more: %s)" % self._settings.get(["url"]))
 
     def get_settings_defaults(self):
-        return dict(url="/static/img/foto.jpg",day=8,night=21,start=8)
+        return dict(
+            pluginenabled=true,
+            startenabled=true,
+            starttime=7,
+            pauseenabled=true,
+            pauseday=8,
+            pausenight=21,
+            telegramenabled=true,
+            telegramtoken='aaa:bbbbbbbbb....',
+            telegramchatid=123456789
+        )
 
     def get_template_configs(self):
 		return [
