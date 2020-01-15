@@ -14,13 +14,12 @@ class JobSchedulerPlugin(
 
     def get_settings_defaults(self):
         return dict(
-            pluginenabled=true,
-            startenabled=true,
+#            startenabled=True,
             starttime=7,
-            pauseenabled=true,
+#            pauseenabled=True,
             pauseday=8,
             pausenight=21,
-            telegramenabled=true,
+#            telegramenabled=True,
             telegramtoken='aaa:bbbbbbbbb....',
             telegramchatid=123456789
         )
