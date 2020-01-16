@@ -8,6 +8,7 @@
 from __future__ import absolute_import
 import octoprint.plugin
 import flask
+import threading
 
 class JobSchedulerPlugin(
         octoprint.plugin.StartupPlugin,
@@ -50,8 +51,7 @@ class JobSchedulerPlugin(
 
 
     def on_api_get(self, request):
-        import threading
-        t = threading.Thread(target=handler, args=(request,))
+        t = threading.Thread(target=JobSchedulerPlugin.handler, args=(request,))
         t.start()
         self._logger.info("Job Scheduler! (Check todo list)")
         return flask.jsonify(foo="bar")
