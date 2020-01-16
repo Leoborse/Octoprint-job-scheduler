@@ -46,6 +46,7 @@ class JobSchedulerPlugin(
 		)
 
     def handler(method):
+        sleep(5)
         self._logger.info("Job Scheduler! (Started: %s)" % method)
     ##### do your response here
 
