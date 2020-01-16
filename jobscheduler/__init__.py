@@ -44,10 +44,21 @@ class JobSchedulerPlugin(
             less=[]
 		)
 
-    def on_api_get(self, request):
+    def handler(request):
         self._logger.info("Job Scheduler! (Started: %s)" % request.method)
+    ##### do your response here
+
+
+    def on_api_get(self, request):
+        import threading
+        t = threading.Thread(target=handler, args=(request,))
+        t.start()
+        self._logger.info("Job Scheduler! (Check todo list)")
         return flask.jsonify(foo="bar")
 #        return flask.make_response("Not found", 404)
+
+
+
 
 def get_implementation_class():
 	return JobSchedulerPlugin()
