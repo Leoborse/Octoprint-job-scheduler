@@ -8,7 +8,6 @@
 from __future__ import absolute_import
 import octoprint.plugin
 import flask
-import threading
 
 class JobSchedulerPlugin(
         octoprint.plugin.StartupPlugin,
@@ -45,16 +44,21 @@ class JobSchedulerPlugin(
             less=[]
 		)
 
-    def handler(method):
-        sleep(5)
-        self._logger.info("Job Scheduler! (Started: %s)" % method)
-    ##### do your response here
-
-
     def on_api_get(self, request):
-        method = request.method
-        t = threading.Thread(target=jsonscheduler_handler, args=(method,))
-        t.start()
+        self._logger.info("Job Scheduler! (token %s)" % self._settings.get(["telegramchatid"])
+#        https://api.telegram.org/bot<token>/METHOD_NAME
+#   POST application/json (except for uploading files)
+# {'chat_id':'Integer or String', 'text': 'messaggio'}
+#        import requests
+#        token = settings.plugins.
+#        url = 'https://api.telegram.org/bot'+token+'/sendmessage'
+#myobj = {'somekey': 'somevalue'}
+#x = requests.post(url, data = myobj)
+#print(x.text)
+#        import threading
+#        method = request.method
+#        t = threading.Thread(target=jsonscheduler_handler, args=(method,))
+#        t.start()
         self._logger.info("Job Scheduler! (Check todo list)")
         return flask.jsonify(foo="bar")
 #        return flask.make_response("Not found", 404)
@@ -63,7 +67,7 @@ class JobSchedulerPlugin(
 def jsonscheduler_handler(method):
     import time
     time.sleep(5)
-    self._logger.info("Job Scheduler! (Started: %s)" % method)
+#    self._logger.info("Job Scheduler! (Started: %s)" % method)
     ##### do your response here
 
 
