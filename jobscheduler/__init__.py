@@ -3,6 +3,7 @@
 # https://codeload.github.com/Leoborse/Octoprint-job-scheduler/zip/master
 
 #  class octoprint.plugin.SimpleApiPlugin
+# http
 
 from __future__ import absolute_import
 import octoprint.plugin
@@ -11,7 +12,9 @@ class JobSchedulerPlugin(
         octoprint.plugin.StartupPlugin,
         octoprint.plugin.TemplatePlugin,
         octoprint.plugin.SettingsPlugin,
-        octoprint.plugin.AssetPlugin):
+        octoprint.plugin.AssetPlugin,
+        octoprint.plugin.SimpleApiPlugin
+        ):
     def on_after_startup(self):
         self._logger.info("Job Scheduler! Started")
 
