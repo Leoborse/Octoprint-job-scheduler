@@ -45,13 +45,14 @@ class JobSchedulerPlugin(
             less=[]
 		)
 
-    def handler(self,request):
-        self._logger.info("Job Scheduler! (Started: %s)" % request.method)
+    def handler(method):
+        self._logger.info("Job Scheduler! (Started: %s)" % method)
     ##### do your response here
 
 
     def on_api_get(self, request):
-        t = threading.Thread(target=JobSchedulerPlugin.handler, args=(self,request))
+        method = request.method
+        t = threading.Thread(target=JobSchedulerPlugin.handler, args=(method,))
         t.start()
         self._logger.info("Job Scheduler! (Check todo list)")
         return flask.jsonify(foo="bar")
