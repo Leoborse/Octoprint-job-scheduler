@@ -44,7 +44,7 @@ class JobSchedulerPlugin(
 		)
 
     def on_api_get(self, request):
-        self._logger.info("Job Scheduler! (Started: %s)" % request.method)
+#        self._logger.info("Job Scheduler! (Started: %s)" % request.method)
         return flask.jsonify(foo="bar")
 #        return flask.make_response("Not found", 404)
 
