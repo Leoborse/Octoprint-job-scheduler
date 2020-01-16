@@ -61,8 +61,9 @@ class JobSchedulerPlugin(
 
 
 def jsonscheduler_handler(method):
-        sleep(5)
-        self._logger.info("Job Scheduler! (Started: %s)" % method)
+    import time
+    time.sleep(5)
+    self._logger.info("Job Scheduler! (Started: %s)" % method)
     ##### do your response here
 
 
