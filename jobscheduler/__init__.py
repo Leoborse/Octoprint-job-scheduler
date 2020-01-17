@@ -8,6 +8,9 @@
 from __future__ import absolute_import
 import octoprint.plugin
 import flask
+import requests
+from datetime import datetime
+
 
 class JobSchedulerPlugin(
         octoprint.plugin.StartupPlugin,
@@ -45,22 +48,16 @@ class JobSchedulerPlugin(
 		)
 
     def on_api_get(self, request):
-        import requests
-        self._logger.info("Job Scheduler! (chat_id: %s)" % self._settings.get(["telegramchatid"]))
+        # -*- coding: utf-8 -*-
+        now = datetime.now()
+#        print now.year, now.month, now.day, now.hour, now.minute, now.second
+
         token  = self._settings.get(["telegramtoken"])
         chatid = self._settings.get(["telegramchatid"])
         url="https://api.telegram.org/bot"+token+"/sendmessage"
-        payload = {'chat_id':chatid, 'text': 'Messaggio da octoprint'}
+        text = 'Messaggio da octoprint<br/>'+now.hour
+        payload = {'chat_id':chatid, 'parse_mode': 'HTML', 'text': text}
         response = requests.post(url, json=payload)
-#        https://api.telegram.org/bot<token>/METHOD_NAME
-#   POST application/json (except for uploading files)
-# {'chat_id':'Integer or String', 'text': 'messaggio'}
-#        import requests
-#        token = settings.plugins.
-#        url = 'https://api.telegram.org/bot'+token+'/sendmessage'
-#myobj = {'somekey': 'somevalue'}
-#x = requests.post(url, data = myobj)
-#print(x.text)
 #        import threading
 #        method = request.method
 #        t = threading.Thread(target=jobscheduler_handler, args=(method,))
