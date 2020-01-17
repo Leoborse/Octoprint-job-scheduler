@@ -55,8 +55,8 @@ class JobSchedulerPlugin(
         token  = self._settings.get(["telegramtoken"])
         chatid = self._settings.get(["telegramchatid"])
         url="https://api.telegram.org/bot"+token+"/sendmessage"
-        text = 'Messaggio da octoprint<br/>'+str(now.hour)
-        payload = {'chat_id':chatid, 'parse_mode': 'HTML', 'text': text}
+        text = 'Messaggio da octoprint.\n Ora corrente: '+str(now.hour)
+        payload = {'chat_id':chatid, 'text': text}
         response = requests.post(url, json=payload)
 #        import threading
 #        method = request.method
