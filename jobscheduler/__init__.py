@@ -45,7 +45,13 @@ class JobSchedulerPlugin(
 		)
 
     def on_api_get(self, request):
-        self._logger.info("Job Scheduler! (token %s)" % self._settings.get(["telegramchatid"]))
+        import requests
+        self._logger.info("Job Scheduler! (chat_id: %s)" % self._settings.get(["telegramchatid"]))
+        token  = self._settings.get(["telegramtoken"])
+        chatid = self._settings.get(["telegramchatid"])
+        url="https://api.telegram.org/bot"+token+"/sendmessage"
+        payload = {'chat_id':chatid, 'text': 'Messaggio da octoprint'}
+        response = requests.post(url, json=payload)
 #        https://api.telegram.org/bot<token>/METHOD_NAME
 #   POST application/json (except for uploading files)
 # {'chat_id':'Integer or String', 'text': 'messaggio'}
@@ -65,7 +71,7 @@ class JobSchedulerPlugin(
 
 # https://codeload.github.com/Leoborse/Octoprint-job-scheduler/zip/master
 
-def jobscheduler_handler(method):
+def jobscheduler_handler(self):
     import time
     time.sleep(5)
 #    self._logger.info("Job Scheduler! (Started: %s)" % method)
