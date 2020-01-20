@@ -17,7 +17,8 @@ class JobSchedulerPlugin(
         octoprint.plugin.TemplatePlugin,
         octoprint.plugin.SettingsPlugin,
         octoprint.plugin.AssetPlugin,
-        octoprint.plugin.SimpleApiPlugin
+        octoprint.plugin.SimpleApiPlugin,
+        octoprint.plugin.EventHandlerPlugin
         ):
     def on_after_startup(self):
         self._logger.info("Job Scheduler! Started")
@@ -47,9 +48,14 @@ class JobSchedulerPlugin(
             less=[]
 		)
 
+	def on_event(self, event, payload):
+		from octoprint.events import Events
+        self._logger.info("Job Scheduler! (Event: %s)" % event)
+
     def on_api_get(self, request):
         # -*- coding: utf-8 -*-
         now = datetime.now()
+        start = self._settings.get(["telegramtoken"])
 #        print now.year, now.month, now.day, now.hour, now.minute, now.second
 
         token  = self._settings.get(["telegramtoken"])
