@@ -57,9 +57,12 @@ class JobSchedulerPlugin(
         return response
 
     def on_event(self, event, payload):
-#        if ( event.startswith('Print') ):
-        if ( event.startswith('') ):
-            self.telegram(self,str(event))
+        if ( event.startswith('Print') ):
+            token  = self._settings.get(["telegramtoken"])
+            chatid = self._settings.get(["telegramchatid"])
+            url="https://api.telegram.org/bot"+token+"/sendmessage"
+            msg = {'chat_id':chatid, 'text': "Jobscheduler: "+str(event)}
+            response = requests.post(url, json=msg)
             self._logger.info("Job Scheduler! Event: " + msg )
         return
 
@@ -77,7 +80,6 @@ class JobSchedulerPlugin(
 #        return flask.make_response("Not found", 404)
 
 # https://codeload.github.com/Leoborse/Octoprint-job-scheduler/zip/master
-
 
 
 def get_implementation_class():
