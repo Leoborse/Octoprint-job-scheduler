@@ -13,7 +13,6 @@ plugin_author_email = "leonardo.borselli@gmail.com"
 plugin_url = "https://github.com/Leoborse/Octoprint-job-scheduler"
 plugin_license = "AGPLv3"
 
-
 # Any additional requirements besides OctoPrint should be listed here
 plugin_requires = []
 
