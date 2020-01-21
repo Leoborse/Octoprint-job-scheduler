@@ -48,7 +48,7 @@ class JobSchedulerPlugin(
             less=[]
 		)
 
-	def on_event(self, event, payload):
+    def on_event(self, event, payload):
 		from octoprint.events import Events
         self._logger.info("Job Scheduler! (Event: %s)" % event)
 
