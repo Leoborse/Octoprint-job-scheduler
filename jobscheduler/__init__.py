@@ -52,6 +52,7 @@ class JobSchedulerPlugin(
 		from octoprint.events import Events
         self._logger.info("Job Scheduler! (Event: %s)" % event)
 
+
     def on_api_get(self, request):
         # -*- coding: utf-8 -*-
         now = datetime.now()
