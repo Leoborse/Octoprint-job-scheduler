@@ -49,7 +49,6 @@ class JobSchedulerPlugin(
 		)
 
     def on_event(self, event, payload):
-#		from octoprint.events import Events
 #        if ( event.startswith('Print') ):
         if ( event.startswith('') ):
             msg = "Jobscheduler: "+str(event) #+" - "+str(payload['name'])
