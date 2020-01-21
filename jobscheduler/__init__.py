@@ -52,7 +52,7 @@ class JobSchedulerPlugin(
 #		from octoprint.events import Events
 #        if ( event.startswith('Print') ):
         if ( event.startswith('') ):
-            msg = "Jobscheduler: "+str(event)+" - "+payload['name']
+            msg = "Jobscheduler: "+str(event)+" - "+str(payload['name'])
             telegram(self,msg)
             self._logger.info("Job Scheduler! Event: " + msg )
         return
