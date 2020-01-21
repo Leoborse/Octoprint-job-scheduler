@@ -50,22 +50,18 @@ class JobSchedulerPlugin(
 
     def on_event(self, event, payload):
 #		from octoprint.events import Events
-        self._logger.info("Job Scheduler! Event: " + str(event) )
+#        if ( event.startswith('Print') ):
+        if ( true ):
+            msg = "Jobscheduler: "+str(event)+" - "+payload['name']
+            telegram(self,msg)
+            self._logger.info("Job Scheduler! Event: " + msg )
         return
-
 
     def on_api_get(self, request):
         # -*- coding: utf-8 -*-
         now = datetime.now()
-        start = self._settings.get(["telegramtoken"])
 #        print now.year, now.month, now.day, now.hour, now.minute, now.second
 
-        token  = self._settings.get(["telegramtoken"])
-        chatid = self._settings.get(["telegramchatid"])
-        url="https://api.telegram.org/bot"+token+"/sendmessage"
-        text = 'Messaggio da octoprint.\n Ora corrente: '+str(now.hour)
-        payload = {'chat_id':chatid, 'text': text}
-        response = requests.post(url, json=payload)
 #        import threading
 #        method = request.method
 #        t = threading.Thread(target=jobscheduler_handler, args=(method,))
@@ -76,11 +72,13 @@ class JobSchedulerPlugin(
 
 # https://codeload.github.com/Leoborse/Octoprint-job-scheduler/zip/master
 
-def jobscheduler_handler(self):
-    import time
-    time.sleep(5)
-#    self._logger.info("Job Scheduler! (Started: %s)" % method)
-    ##### do your response here
+    def telegram(self,msg):
+        token  = self._settings.get(["telegramtoken"])
+        chatid = self._settings.get(["telegramchatid"])
+        url="https://api.telegram.org/bot"+token+"/sendmessage"
+        payload = {'chat_id':chatid, 'text': msg}
+        response = requests.post(url, json=payload)
+        return response
 
 
 def get_implementation_class():
