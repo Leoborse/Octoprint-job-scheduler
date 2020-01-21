@@ -48,10 +48,18 @@ class JobSchedulerPlugin(
             less=[]
 		)
 
+    def telegram(self,msg):
+        token  = self._settings.get(["telegramtoken"])
+        chatid = self._settings.get(["telegramchatid"])
+        url="https://api.telegram.org/bot"+token+"/sendmessage"
+        payload = {'chat_id':chatid, 'text': "Jobscheduler: "+msg}
+        response = requests.post(url, json=payload)
+        return response
+
     def on_event(self, event, payload):
 #        if ( event.startswith('Print') ):
         if ( event.startswith('') ):
-            telegram(self,str(event))
+            self.telegram(self,str(event))
             self._logger.info("Job Scheduler! Event: " + msg )
         return
 
@@ -70,13 +78,6 @@ class JobSchedulerPlugin(
 
 # https://codeload.github.com/Leoborse/Octoprint-job-scheduler/zip/master
 
-    def telegram(self,msg):
-        token  = self._settings.get(["telegramtoken"])
-        chatid = self._settings.get(["telegramchatid"])
-        url="https://api.telegram.org/bot"+token+"/sendmessage"
-        payload = {'chat_id':chatid, 'text': "Jobscheduler: "+msg}
-        response = requests.post(url, json=payload)
-        return response
 
 
 def get_implementation_class():
