@@ -51,8 +51,7 @@ class JobSchedulerPlugin(
     def on_event(self, event, payload):
 #        if ( event.startswith('Print') ):
         if ( event.startswith('') ):
-            msg = "Jobscheduler: "+str(event) #+" - "+str(payload['name'])
-            telegram(self,msg)
+            telegram(self,str(event))
             self._logger.info("Job Scheduler! Event: " + msg )
         return
 
@@ -75,7 +74,7 @@ class JobSchedulerPlugin(
         token  = self._settings.get(["telegramtoken"])
         chatid = self._settings.get(["telegramchatid"])
         url="https://api.telegram.org/bot"+token+"/sendmessage"
-        payload = {'chat_id':chatid, 'text': msg}
+        payload = {'chat_id':chatid, 'text': "Jobscheduler: "+msg}
         response = requests.post(url, json=payload)
         return response
 
