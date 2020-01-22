@@ -48,7 +48,7 @@ class JobSchedulerPlugin(
             less=[]
 		)
 
-    def telegram(self,msg):
+    def telegram(self,msg,xxx):
         token  = self._settings.get(["telegramtoken"])
         chatid = self._settings.get(["telegramchatid"])
         url="https://api.telegram.org/bot"+token+"/sendmessage"
