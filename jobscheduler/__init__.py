@@ -57,7 +57,7 @@ class JobSchedulerPlugin(
         return response
 
     def on_event(self, event, payload):
-        if ( event.startswith('F') ): #'Print') ):
+        if ( event.startswith('Print') ):
 #            self.telegram(str(event))
             token  = self._settings.get(["telegramtoken"])
             chatid = self._settings.get(["telegramchatid"])
