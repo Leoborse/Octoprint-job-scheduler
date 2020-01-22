@@ -58,7 +58,7 @@ class JobSchedulerPlugin(
 
     def on_event(self, event, payload):
         if ( event.startswith('F') ): #'Print') ):
-            self.telegram(str(event))
+#            self.telegram(str(event))
             token  = self._settings.get(["telegramtoken"])
             chatid = self._settings.get(["telegramchatid"])
             url="https://api.telegram.org/bot"+token+"/sendmessage"
