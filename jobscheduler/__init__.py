@@ -10,7 +10,6 @@ class JobSchedulerPlugin(
         octoprint.plugin.TemplatePlugin,
         octoprint.plugin.SettingsPlugin,
         octoprint.plugin.AssetPlugin,
-#        octoprint.plugin.SimpleApiPlugin,
         octoprint.plugin.EventHandlerPlugin
         ):
 
