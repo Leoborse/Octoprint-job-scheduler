@@ -52,25 +52,18 @@ class JobSchedulerPlugin(
             self.telegram(str(event))
         return
 
-	def check_job(self):
-        self.telegram("Job Scheduler! (Timer action)")
+    def checkjob(self):
+        now = datetime.now()
+        msg = "Job Scheduler! (Timer action) "+str(now)
+        self.telegram(msg)
         return
-
-#        now = datetime.now()
-#        print now.year, now.month, now.day, now.hour, now.minute, now.second
-#        import threading
-#        method = request.method
-
-# https://codeload.github.com/Leoborse/Octoprint-job-scheduler/zip/master
 
 	def interval(self):
 		return 5*60 # 5 minuti
 
     def on_after_startup(self):
         self._logger.info("Job Scheduler! Started")
-		RepeatedTimer(self.interval, self.check_job).start()
-
-#    def on_api_get(self, request):
+		RepeatedTimer(self.interval, self.checkjob).start()
 
 def get_implementation_class():
 	return JobSchedulerPlugin()
