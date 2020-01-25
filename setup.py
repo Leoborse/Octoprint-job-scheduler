@@ -1,6 +1,7 @@
 # coding=utf-8
 # https://codeload.github.com/Leoborse/Octoprint-job-scheduler/zip/master
 
+
 # The plugin's identifier, has to be unique
 from setuptools import setup
 plugin_identifier = "jobscheduler"
