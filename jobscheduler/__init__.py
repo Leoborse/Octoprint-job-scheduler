@@ -54,7 +54,7 @@ class JobSchedulerPlugin(
         return
 
 	def check_job(self):
-        self.telegram("Job Scheduler! (Timer started)")
+        self.telegram("Job Scheduler! (Timer action)")
         return
 
 #        now = datetime.now()
