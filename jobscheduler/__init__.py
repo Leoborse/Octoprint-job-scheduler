@@ -76,9 +76,6 @@ class JobSchedulerPlugin(
 
 # https://codeload.github.com/Leoborse/Octoprint-job-scheduler/zip/master
 
-
-
-
 	def on_after_startup(self):
 		RepeatedTimer(self.interval, self.check_job).start()
 
