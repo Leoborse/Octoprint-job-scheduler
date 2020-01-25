@@ -19,8 +19,6 @@ class JobSchedulerPlugin(
 #        octoprint.plugin.SimpleApiPlugin,
         octoprint.plugin.EventHandlerPlugin
         ):
-    def on_after_startup(self):
-        self._logger.info("Job Scheduler! Started")
 
     def get_settings_defaults(self):
         return dict(
@@ -48,7 +46,6 @@ class JobSchedulerPlugin(
 		)
 
     def telegram(self,msg):
-#        self._logger.info("Job Scheduler! Telegram sendmessage")
         token  = self._settings.get(["telegramtoken"])
         chatid = self._settings.get(["telegramchatid"])
         url="https://api.telegram.org/bot"+token+"/sendmessage"
@@ -59,11 +56,9 @@ class JobSchedulerPlugin(
     def on_event(self, event, payload):
 #        if ( True ):
         if ( event.startswith('Print') ):
-            self.telegram(str(event)+" by function")
+            self._logger.info("Job Scheduler! Event: "+str(event))
+            self.telegram(str(event))
         return
-
-	def interval(self):
-		return 5*60 # 5 minuti
 
 	def check_job(self):
         self.telegram("Job Scheduler! (Timer started)")
@@ -76,7 +71,11 @@ class JobSchedulerPlugin(
 
 # https://codeload.github.com/Leoborse/Octoprint-job-scheduler/zip/master
 
-	def on_after_startup(self):
+	def interval(self):
+		return 5*60 # 5 minuti
+
+    def on_after_startup(self):
+        self._logger.info("Job Scheduler! Started")
 		RepeatedTimer(self.interval, self.check_job).start()
 
 #    def on_api_get(self, request):
