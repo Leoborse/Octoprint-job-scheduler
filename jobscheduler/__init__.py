@@ -11,7 +11,6 @@ import flask
 import requests
 from datetime import datetime
 
-
 class JobSchedulerPlugin(
         octoprint.plugin.StartupPlugin,
         octoprint.plugin.TemplatePlugin,
@@ -49,6 +48,7 @@ class JobSchedulerPlugin(
 		)
 
     def telegram(self,msg):
+        self._logger.info("Job Scheduler! Telegram sendmessage")
         token  = self._settings.get(["telegramtoken"])
         chatid = self._settings.get(["telegramchatid"])
         url="https://api.telegram.org/bot"+token+"/sendmessage"
@@ -57,8 +57,9 @@ class JobSchedulerPlugin(
         return response
 
     def on_event(self, event, payload):
-        if ( event.startswith('Print') ):
-#            self.telegram(str(event))
+#        if ( event.startswith('Print') ):
+        if ( True ):
+            self.telegram(str(event)+" by function")
             token  = self._settings.get(["telegramtoken"])
             chatid = self._settings.get(["telegramchatid"])
             url="https://api.telegram.org/bot"+token+"/sendmessage"
