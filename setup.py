@@ -41,7 +41,6 @@ plugin_ignored_packages = []
 additional_setup_parameters = {}
 
 ########################################################################################################################
-
 try:
     import octoprint_setuptools
 except:
