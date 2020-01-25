@@ -63,7 +63,7 @@ class JobSchedulerPlugin(
 
     def on_after_startup(self):
         self._logger.info("Job Scheduler! Started")
-		RepeatedTimer(self.interval, self.checkjob).start()
+        RepeatedTimer(self.interval, self.checkjob).start()
 
 def get_implementation_class():
 	return JobSchedulerPlugin()
