@@ -74,7 +74,7 @@ class JobSchedulerPlugin(
         if (
             self._settings.get(["startenabled"]) and
             self._settings.get(["startenabled"]) == hr and
-            state = "Operational"
+            state == "Operational"
         ):
             self._printer.resume_print()
             msg = "Stampa avviata"
@@ -83,7 +83,7 @@ class JobSchedulerPlugin(
         if (
             self._settings.get(["pauseenabled"]) and
             self._settings.get(["pauseday"]) == hr and
-            state = "Paused"
+            state == "Paused"
         ):
             self._printer.resume_print()
             msg = "Stampa ripresa"
@@ -92,7 +92,7 @@ class JobSchedulerPlugin(
         if (
             self._settings.get(["pauseenabled"]) and
             self._settings.get(["pausenight"]) == hr and
-            state = "Printing"
+            state == "Printing"
         ):
             self._printer.pause_print()
             msg = "Stampa sospesa"
