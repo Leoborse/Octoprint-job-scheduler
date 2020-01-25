@@ -13,7 +13,8 @@ class JobSchedulerPlugin(
         octoprint.plugin.TemplatePlugin,
         octoprint.plugin.SettingsPlugin,
         octoprint.plugin.AssetPlugin,
-        octoprint.plugin.EventHandlerPlugin
+        octoprint.plugin.EventHandlerPlugin,
+        octoprint.plugin.ProgressPlugin
         ):
 
     def get_settings_defaults(self):
@@ -55,11 +56,15 @@ class JobSchedulerPlugin(
             self.telegram(str(event))
         return
 
+    def on_print_progress(self, storage, path, progress):
+        msg = path + " " + str(progress)
+        self.telegram(msg)
+        return
+
     def checkjob(self):
         now = datetime.now()
         msg = "Job Scheduler! (Timer action) "+str(now)
         self._logger.info(msg)
-        self.telegram(msg)
         return
 
     def interval(self):
