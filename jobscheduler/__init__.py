@@ -66,7 +66,7 @@ class JobSchedulerPlugin(
 		return 5*60 # 5 minuti
 
 	def check_job(self):
-        self._logger.info("Job Scheduler! (Check todo list)")
+        self.telegram("Job Scheduler! (Timer started)")
 
 	def on_after_startup(self):
 		RepeatedTimer(self.interval, self.check_job).start()
