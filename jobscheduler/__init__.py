@@ -1,10 +1,4 @@
 # coding=utf-8
-
-# https://codeload.github.com/Leoborse/Octoprint-job-scheduler/zip/master
-
-#  class octoprint.plugin.SimpleApiPlugin
-# http
-
 from __future__ import absolute_import
 import octoprint.plugin
 import flask
@@ -54,7 +48,6 @@ class JobSchedulerPlugin(
         return response
 
     def on_event(self, event, payload):
-#        if ( True ):
         if ( event.startswith('Print') ):
             self._logger.info("Job Scheduler! Event: "+str(event))
             self.telegram(str(event))
@@ -62,12 +55,12 @@ class JobSchedulerPlugin(
 
 	def check_job(self):
         self.telegram("Job Scheduler! (Timer started)")
+        return
+
 #        now = datetime.now()
 #        print now.year, now.month, now.day, now.hour, now.minute, now.second
-
 #        import threading
 #        method = request.method
-        return
 
 # https://codeload.github.com/Leoborse/Octoprint-job-scheduler/zip/master
 
