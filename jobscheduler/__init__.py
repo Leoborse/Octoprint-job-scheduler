@@ -62,8 +62,8 @@ class JobSchedulerPlugin(
         self.telegram(msg)
         return
 
-	def interval(self):
-		return 1*60 # in secondi
+    def interval(self):
+        return 1*60 # secondi
 
     def on_after_startup(self):
         self._logger.info("Job Scheduler! Started")
