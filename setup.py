@@ -1,11 +1,12 @@
 # coding=utf-8
+# https://codeload.github.com/Leoborse/Octoprint-job-scheduler/zip/master
 
 # The plugin's identifier, has to be unique
 from setuptools import setup
 plugin_identifier = "jobscheduler"
 plugin_package = "jobscheduler"
 plugin_name = "A Job Scheduler"
-plugin_version = "0.3.23"
+plugin_version = "0.3.24"
 plugin_description = """A job scheduler for OctoPrint"""
 plugin_author = "Leonardo Borselli"
 plugin_author_email = "leonardo.borselli@gmail.com"
