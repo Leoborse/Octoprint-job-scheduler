@@ -1,6 +1,7 @@
 # coding=utf-8
 from __future__ import absolute_import
-from octoprint.plugin import RepeatedTimer
+import octoprint.plugin
+from octoprint.util import RepeatedTimer
 import flask
 import requests
 from datetime import datetime
