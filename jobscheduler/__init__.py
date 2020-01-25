@@ -16,7 +16,7 @@ class JobSchedulerPlugin(
         octoprint.plugin.TemplatePlugin,
         octoprint.plugin.SettingsPlugin,
         octoprint.plugin.AssetPlugin,
-        octoprint.plugin.SimpleApiPlugin,
+#        octoprint.plugin.SimpleApiPlugin,
         octoprint.plugin.EventHandlerPlugin
         ):
     def on_after_startup(self):
@@ -48,7 +48,7 @@ class JobSchedulerPlugin(
 		)
 
     def telegram(self,msg):
-        self._logger.info("Job Scheduler! Telegram sendmessage")
+#        self._logger.info("Job Scheduler! Telegram sendmessage")
         token  = self._settings.get(["telegramtoken"])
         chatid = self._settings.get(["telegramchatid"])
         url="https://api.telegram.org/bot"+token+"/sendmessage"
@@ -67,25 +67,22 @@ class JobSchedulerPlugin(
 
 	def check_job(self):
         self.telegram("Job Scheduler! (Timer started)")
-
-	def on_after_startup(self):
-		RepeatedTimer(self.interval, self.check_job).start()
-
-    def on_api_get(self, request):
-        # -*- coding: utf-8 -*-
         now = datetime.now()
 #        print now.year, now.month, now.day, now.hour, now.minute, now.second
 
 #        import threading
 #        method = request.method
-#        t = threading.Thread(target=jobscheduler_handler, args=(method,))
-#        t.start()
-        self._logger.info("Job Scheduler! (Check todo list)")
-        return flask.jsonify(foo="bar")
-#        return flask.make_response("Not found", 404)
+        return
 
 # https://codeload.github.com/Leoborse/Octoprint-job-scheduler/zip/master
 
+
+
+
+	def on_after_startup(self):
+		RepeatedTimer(self.interval, self.check_job).start()
+
+#    def on_api_get(self, request):
 
 def get_implementation_class():
 	return JobSchedulerPlugin()
