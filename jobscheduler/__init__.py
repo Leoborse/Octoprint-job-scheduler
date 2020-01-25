@@ -67,7 +67,7 @@ class JobSchedulerPlugin(
 
 	def check_job(self):
         self.telegram("Job Scheduler! (Timer started)")
-        now = datetime.now()
+#        now = datetime.now()
 #        print now.year, now.month, now.day, now.hour, now.minute, now.second
 
 #        import threading
