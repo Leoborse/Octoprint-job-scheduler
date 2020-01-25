@@ -65,11 +65,11 @@ class JobSchedulerPlugin(
 	def interval(self):
 		return 5*60 # 5 minuti
 
-	def on_after_startup(self):
-		RepeatedTimer(self.interval, self.check_job).start()
-
 	def check_job(self):
         self._logger.info("Job Scheduler! (Check todo list)")
+
+	def on_after_startup(self):
+		RepeatedTimer(self.interval, self.check_job).start()
 
     def on_api_get(self, request):
         # -*- coding: utf-8 -*-
