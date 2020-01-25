@@ -65,7 +65,7 @@ class JobSchedulerPlugin(
             url="https://api.telegram.org/bot"+token+"/sendmessage"
             msg = {'chat_id':chatid, 'text': "Jobscheduler: "+str(event)}
             response = requests.post(url, json=msg)
-            self._logger.info("Job Scheduler! Event: " + msg )
+            self._logger.info("Job Scheduler! Event: " + str(msg) )
         return
 
     def on_api_get(self, request):
