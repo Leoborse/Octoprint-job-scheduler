@@ -56,11 +56,12 @@ class JobSchedulerPlugin(
     def checkjob(self):
         now = datetime.now()
         msg = "Job Scheduler! (Timer action) "+str(now)
+        self._logger.info(msg)
         self.telegram(msg)
         return
 
 	def interval(self):
-		return 5*60 # 5 minuti
+		return 1*60 # in secondi
 
     def on_after_startup(self):
         self._logger.info("Job Scheduler! Started")
