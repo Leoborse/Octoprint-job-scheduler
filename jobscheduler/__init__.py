@@ -57,16 +57,17 @@ class JobSchedulerPlugin(
         return response
 
     def on_event(self, event, payload):
-#        if ( event.startswith('Print') ):
-        if ( True ):
+#        if ( True ):
+        if ( event.startswith('Print') ):
             self.telegram(str(event)+" by function")
-            token  = self._settings.get(["telegramtoken"])
-            chatid = self._settings.get(["telegramchatid"])
-            url="https://api.telegram.org/bot"+token+"/sendmessage"
-            msg = {'chat_id':chatid, 'text': "Jobscheduler: "+str(event)}
-            response = requests.post(url, json=msg)
-            self._logger.info("Job Scheduler! Event: " + str(msg) )
         return
+
+	def on_after_startup(self):
+        interval = 5*60 # 5 minuti
+		RepeatedTimer(interval, self.check_job).start()
+
+	def check_job(self):
+        self._logger.info("Job Scheduler! (Check todo list)")
 
     def on_api_get(self, request):
         # -*- coding: utf-8 -*-
