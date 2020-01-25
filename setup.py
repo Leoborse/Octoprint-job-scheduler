@@ -6,7 +6,7 @@ from setuptools import setup
 plugin_identifier = "jobscheduler"
 plugin_package = "jobscheduler"
 plugin_name = "A Job Scheduler"
-plugin_version = "0.3.26"
+plugin_version = "0.3.28"
 plugin_description = """A job scheduler for OctoPrint"""
 plugin_author = "Leonardo Borselli"
 plugin_author_email = "leonardo.borselli@gmail.com"
