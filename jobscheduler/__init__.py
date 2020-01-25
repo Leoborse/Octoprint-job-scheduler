@@ -43,11 +43,13 @@ class JobSchedulerPlugin(
 		)
 
     def telegram(self,msg):
-        token  = self._settings.get(["telegramtoken"])
-        chatid = self._settings.get(["telegramchatid"])
-        url="https://api.telegram.org/bot"+token+"/sendmessage"
-        payload = {'chat_id':chatid, 'text': "Jobscheduler: "+msg}
-        response = requests.post(url, json=payload)
+        response = "disabled"
+        if (self._settings.get(["telegramenabled"])):
+            token  = self._settings.get(["telegramtoken"])
+            chatid = self._settings.get(["telegramchatid"])
+            url="https://api.telegram.org/bot"+token+"/sendmessage"
+            payload = {'chat_id':chatid, 'text': "Jobscheduler: "+msg}
+            response = requests.post(url, json=payload)
         return response
 
     def on_event(self, event, payload):
@@ -63,8 +65,41 @@ class JobSchedulerPlugin(
 
     def checkjob(self):
         now = datetime.now()
-        msg = "Job Scheduler! (Timer action) "+str(now)
-        self._logger.info(msg)
+        hr = now.hour
+        state = self._printer.get_state_id()
+        self._logger.info(state)
+        msg = ""
+
+        # Avvio all'ora prevista
+        if (
+            self._settings.get(["startenabled"]) and
+            self._settings.get(["startenabled"]) == hr and
+            state = "Operational"
+        ):
+            self._printer.resume_print()
+            msg = "Stampa avviata"
+
+        # Riavvio al mattino
+        if (
+            self._settings.get(["pauseenabled"]) and
+            self._settings.get(["pauseday"]) == hr and
+            state = "Paused"
+        ):
+            self._printer.resume_print()
+            msg = "Stampa ripresa"
+
+        # Sospensione alla sera
+        if (
+            self._settings.get(["pauseenabled"]) and
+            self._settings.get(["pausenight"]) == hr and
+            state = "Printing"
+        ):
+            self._printer.pause_print()
+            msg = "Stampa sospesa"
+
+        if ( msg != "" ):
+            self.telegram(msg)
+            self._logger.info(msg)
         return
 
     def interval(self):
