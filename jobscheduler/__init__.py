@@ -67,7 +67,9 @@ class JobSchedulerPlugin(
 
     def on_after_startup(self):
         self._logger.info("Job Scheduler! Started")
-        RepeatedTimer(60, self.checkjob).start()
+        # delay in secondi
+        delay = 1*60
+        RepeatedTimer(delay, self.checkjob).start()
 
 def get_implementation_class():
 	return JobSchedulerPlugin()
