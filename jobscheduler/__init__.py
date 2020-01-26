@@ -82,7 +82,7 @@ class JobSchedulerPlugin(
         url="https://api.telegram.org/bot"+token+"/getMe"
         response = requests.get(url)
         self._logger.info("Job Scheduler! Telegram bot info: "+str(response.json()['result']['first_name']))
-        return response.json()
+        return response
 
     def on_event(self, event, payload):
         if ( event.startswith('Print') ):
