@@ -50,6 +50,14 @@ class JobSchedulerPlugin(
             url="https://api.telegram.org/bot"+token+"/sendmessage"
             payload = {'chat_id':chatid, 'text': "Jobscheduler: "+msg}
             response = requests.post(url, json=payload)
+            self._logger.info("Job Scheduler! Telegram message: "+msg)
+        return response
+
+    def telegram_bot_info(self):
+        token  = self._settings.get(["telegramtoken"])
+        url="https://api.telegram.org/bot"+token+"/getMe"
+        response = requests.get(url)
+        self._logger.info("Job Scheduler! Telegram bot info: "+response)
         return response
 
     def on_event(self, event, payload):
@@ -64,6 +72,7 @@ class JobSchedulerPlugin(
         return
 
     def checkjob(self):
+        self.telegram_bot_info()
         now = datetime.now()
         hr = now.hour
         state = self._printer.get_state_id()
@@ -101,9 +110,6 @@ class JobSchedulerPlugin(
             self.telegram(msg)
             self._logger.info(msg)
         return
-
-    def interval(self):
-        return 1*60 # secondi
 
     def on_after_startup(self):
         self._logger.info("Job Scheduler! Started")
