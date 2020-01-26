@@ -57,7 +57,7 @@ class JobSchedulerPlugin(
         token  = self._settings.get(["telegramtoken"])
         url="https://api.telegram.org/bot"+token+"/getMe"
         response = requests.get(url)
-        self._logger.info("Job Scheduler! Telegram bot info: "+response)
+        self._logger.info("Job Scheduler! Telegram bot info: "+str(response))
         return response
 
     def on_event(self, event, payload):
