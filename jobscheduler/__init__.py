@@ -49,6 +49,8 @@ class JobSchedulerPlugin(
             telegram_bot_chat=["chat_id"]
         )
 
+    # curl -H "X-Api-Key: 9DF4CEF9B41F42D1A0F95C4D4BDC6FD6" http://localhost:5000/api/plugin/jobscheduler
+
     def on_api_command(self, command, data):
         response = "{}"
         if command == "telegram_bot_chat":
@@ -61,7 +63,8 @@ class JobSchedulerPlugin(
         return flask.jsonify(response)
 
     def on_api_get(self, request):
-        return flask.jsonify(foo="bar")
+        response = self.telegram_bot_info().json()
+        return flask.jsonify(response)
 
     def telegram(self,msg):
         response = "disabled"
