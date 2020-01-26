@@ -108,12 +108,12 @@ class JobSchedulerPlugin(
             self._settings.get(["starttime"]) == hr and
             state == "OPERATIONAL"
         ):
-            self._printer.start_print()
-            self.telegram("Stampa avviata")
+            cmd = self._printer.start_print()
+            self.telegram("Stampa avviata: "+str(cmd))
 
         # Riavvio al mattino
         if (
-            self._settings.get(["pauseenabled"]) and
+            self._settings.get(["pauseenabled"]) == True and
             self._settings.get(["pauseday"]) == hr and
             state == "PAUSED"
         ):
@@ -122,7 +122,7 @@ class JobSchedulerPlugin(
 
         # Sospensione alla sera
         if (
-            self._settings.get(["pauseenabled"]) and
+            self._settings.get(["pauseenabled"]) == True and
             self._settings.get(["pausenight"]) == hr and
             state == "PRINTING"
         ):
