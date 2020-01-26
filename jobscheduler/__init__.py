@@ -99,12 +99,12 @@ class JobSchedulerPlugin(
         now = datetime.now()
         hr = now.hour
         state = self._printer.get_state_id()
-        msg = state + " " + str(hr)
+        msg = state + " " + str(hr)+ " " + str(self._settings.get(["starttime"]))+ " " + str(self._settings.get(["startenabled"]))
         self.telegram(msg)
 
         # Avvio all'ora prevista
         if (
-            self._settings.get(["startenabled"]) and
+            self._settings.get(["startenabled"]) == True and
             self._settings.get(["starttime"]) == hr and
             state == "OPERATIONAL"
         ):
