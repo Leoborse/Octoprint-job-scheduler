@@ -91,7 +91,7 @@ class JobSchedulerPlugin(
         return
 
     def on_print_progress(self, storage, path, progress):
-        msg = path + " " + str(progress)
+        msg = path + " " + str(progress)+"%"
         self.telegram(msg)
         return
 
@@ -107,7 +107,7 @@ class JobSchedulerPlugin(
             self._settings.get(["startenabled"]) == hr and
             state == "OPERATIONAL"
         ):
-            self._printer.resume_print()
+            self._printer.start_print()
             self.telegram("Stampa avviata")
 
         # Riavvio al mattino
