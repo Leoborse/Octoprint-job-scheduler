@@ -16,11 +16,13 @@
     </div>
   </div>
 
-  <h4>Specify day working time (pause on night)</h4>
+  <h4>
+    <label class="checkbox">
+    <input type="checkbox" data-bind="checked: settings.plugins.jobscheduler.pauseenabled"/>
+    Specify day working time (pause on night)</label>
+  </h4>
   <div class="row-fluid">
     <div class="span1">
-      <input type="checkbox" data-bind="checked: settings.plugins.jobscheduler.pauseenabled"/>
-      Enable
     </div>
     <div class="offset1 span1"><i class="fa fa-sun-o fa-2x right"></i></div>
     <div class="span2">
