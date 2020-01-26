@@ -6,7 +6,7 @@
 .right {
   position: relative;
   float: right;
-  padding-right: 1em;
+  padding-right: 1ex;
 }
 
 .row-fluid.jobscheduler{
