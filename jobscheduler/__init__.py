@@ -100,7 +100,7 @@ class JobSchedulerPlugin(
         hr = now.hour
         state = self._printer.get_state_id()
         msg = state + " " + str(hr)
-        self._logger.info(state)
+        self.telegram(msg)
 
         # Avvio all'ora prevista
         if (
