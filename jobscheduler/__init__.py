@@ -104,7 +104,7 @@ class JobSchedulerPlugin(
 
         # Avvio all'ora prevista
         self.telegram(str(self._settings.get(["startenabled"]) == True))
-        self.telegram(str(self._settings.get(["starttime"]) == hr))
+        self.telegram(str(self._settings.get(["starttime"]) == str(hr)))
         self.telegram(str(state == "OPERATIONAL"))
         if (
             self._settings.get(["startenabled"]) == True and
