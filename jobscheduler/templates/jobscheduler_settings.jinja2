@@ -1,6 +1,5 @@
+<h3 class="blu">Job scheduling and pausing over night</h3>
 <form class="form-horizontal">
-
-  <h3 class="blu">Job scheduling and pausing over night</h3>
 
   <h4>Settings</h4>
   <div class="control-group">
@@ -16,27 +15,33 @@
     </div>
   </div>
 
-  <h4>
+  <label class="checkbox">
     <input type="checkbox" data-bind="checked: settings.plugins.jobscheduler.pauseenabled"/>
     Specify day working time (pause on night)
-  </h4>
+  </label>
+
   <div class="row-fluid">
+
     <div class="span1"><i class="fa fa-sun-o fa-2x right blu"></i></div>
     <div class="span3">
       <input type="text" data-bind="value: settings.plugins.jobscheduler.pauseday">
     </div>
+
     <div class="offset2 span1"><i class="fa fa-moon-o fa-2x right blu"></i></div>
     <div class="span3">
       <input type="text" data-bind="value: settings.plugins.jobscheduler.pausenight">
     </div>
+
   </div>
 
 
-  <h4>
+  <label class="checkbox">
     <input type="checkbox" data-bind="checked: settings.plugins.jobscheduler.telegramenabled"/>
     Enable Telegram messaging<i class="fa fa-telegram blue"></i>
-  </h4>
+  </label>
+
   <div class="row-fluid">
+
     <div class="span1"><i class="fa fa-key fa-2x right blu"></i></div>
     <div class="span3">
       <input type="text" data-bind="value: settings.plugins.jobscheduler.telegramtoken">
@@ -46,6 +51,7 @@
     <div class="span3">
       <input type="text" data-bind="value: settings.plugins.jobscheduler.telegramchatid">
     </div>
+
   </div>
 
 </form>
