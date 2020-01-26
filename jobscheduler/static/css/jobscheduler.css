@@ -2,3 +2,8 @@
 #settings_plugin_jobscheduler>form>h3{
   color: #0000FF;
 }
+
+.right {
+  position: relative;
+  float: right;
+}
