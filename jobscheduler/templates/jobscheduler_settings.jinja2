@@ -1,37 +1,25 @@
 <h3 class="blu">Job scheduling and pausing over night</h3>
+
 <form class="form-horizontal">
 
-  <h4>Settings</h4>
-  <div class="control-group">
-    <div class="controls">
-      <label class="checkbox">
-      <input type="checkbox" data-bind="checked: settings.plugins.jobscheduler.startenabled"/>
-      Enable scheduled print job</label>
-    </div>
-
-    <label class="control-label"><i class="fa fa-play blu"></i></label>
-    <div class="controls">
-      <input type="text" class="input-block-level" data-bind="value: settings.plugins.jobscheduler.starttime"/>
-    </div>
+  <label class="checkbox">
+    <input type="checkbox" data-bind="checked: settings.plugins.jobscheduler.startenabled"/>
+    Scheduled print start
+  </label>
+  <div class="row-fluid jobscheduler">
+    <div class="span1"><i class="fa fa-play fa-2x right blu"></i></div>
+    <input type="text" class="span3" data-bind="value: settings.plugins.jobscheduler.starttime">
   </div>
 
   <label class="checkbox">
     <input type="checkbox" data-bind="checked: settings.plugins.jobscheduler.pauseenabled"/>
     Specify day working time (pause on night)
   </label>
-
   <div class="row-fluid jobscheduler">
-
     <div class="span1"><i class="fa fa-sun-o fa-2x right blu"></i></div>
-    <div class="span3">
-      <input type="text" data-bind="value: settings.plugins.jobscheduler.pauseday">
-    </div>
-
+    <input type="text" class="span3" data-bind="value: settings.plugins.jobscheduler.pauseday">
     <div class="offset2 span1"><i class="fa fa-moon-o fa-2x right blu"></i></div>
-    <div class="span3">
-      <input type="text" data-bind="value: settings.plugins.jobscheduler.pausenight">
-    </div>
-
+    <input type="text" class="span3" data-bind="value: settings.plugins.jobscheduler.pausenight">
   </div>
 
 
@@ -39,16 +27,11 @@
     <input type="checkbox" data-bind="checked: settings.plugins.jobscheduler.telegramenabled"/>
     Enable Telegram messaging <i class="fa fa-telegram blu"></i>
   </label>
-
   <div class="row-fluid jobscheduler">
-
     <div class="span1"><i class="fa fa-key fa-2x right blu"></i></div>
     <input type="text" class="span9" data-bind="value: settings.plugins.jobscheduler.telegramtoken">
-    <div class="span2">button</div>
-
-    <div class="span1"><i class="fa fa-user-o fa-2x right blu"></i></div>
+    <div class="offset2 span1"><i class="fa fa-user-o fa-2x right blu"></i></div>
     <input type="text" class="span2" data-bind="value: settings.plugins.jobscheduler.telegramchatid">
-
   </div>
 
 </form>
