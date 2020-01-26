@@ -74,7 +74,7 @@ class JobSchedulerPlugin(
             url="https://api.telegram.org/bot"+token+"/sendmessage"
             payload = {'chat_id':chatid, 'text': "Jobscheduler: "+msg}
             response = requests.post(url, json=payload)
-            self._logger.info("Job Scheduler! Telegram message: "+msg)
+        self._logger.info("Job Scheduler! Message: "+msg)
         return response
 
     def telegram_bot_info(self):
@@ -100,7 +100,6 @@ class JobSchedulerPlugin(
         hr = now.hour
         state = self._printer.get_state_id()
         self._logger.info(state)
-        msg = ""
 
         # Avvio all'ora prevista
         if (
@@ -109,7 +108,7 @@ class JobSchedulerPlugin(
             state == "Operational"
         ):
             self._printer.resume_print()
-            msg = "Stampa avviata"
+            self.telegram("Stampa avviata")
 
         # Riavvio al mattino
         if (
@@ -118,7 +117,7 @@ class JobSchedulerPlugin(
             state == "Paused"
         ):
             self._printer.resume_print()
-            msg = "Stampa ripresa"
+            self.telegram("Stampa ripresa")
 
         # Sospensione alla sera
         if (
@@ -127,11 +126,8 @@ class JobSchedulerPlugin(
             state == "Printing"
         ):
             self._printer.pause_print()
-            msg = "Stampa sospesa"
+            self.telegram("Stampa sospesa")
 
-        if ( msg != "" ):
-            self.telegram(msg)
-            self._logger.info(msg)
         return
 
     def on_after_startup(self):
