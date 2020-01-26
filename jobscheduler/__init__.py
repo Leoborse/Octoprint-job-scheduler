@@ -104,7 +104,7 @@ class JobSchedulerPlugin(
         # Avvio all'ora prevista
         if (
             self._settings.get(["startenabled"]) and
-            self._settings.get(["startenabled"]) == hr and
+            self._settings.get(["starttime"]) == hr and
             state == "OPERATIONAL"
         ):
             self._printer.start_print()
