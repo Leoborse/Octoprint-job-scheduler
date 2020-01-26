@@ -99,16 +99,13 @@ class JobSchedulerPlugin(
         now = datetime.now()
         hr = now.hour
         state = self._printer.get_state_id()
-        msg = state + " " + str(hr)+ " " + str(self._settings.get(["starttime"]))+ " " + str(self._settings.get(["startenabled"]))
+        msg = state + " " + str(hr) + " " + str(now)
         self.telegram(msg)
 
         # Avvio all'ora prevista
-        self.telegram(str(self._settings.get(["startenabled"]) == True))
-        self.telegram(str(self._settings.get(["starttime"]) == str(hr)))
-        self.telegram(str(state == "OPERATIONAL"))
         if (
             self._settings.get(["startenabled"]) == True and
-            self._settings.get(["starttime"]) == hr and
+            self._settings.get(["starttime"]) == str(hr) and
             state == "OPERATIONAL"
         ):
             cmd = self._printer.start_print()
@@ -117,7 +114,7 @@ class JobSchedulerPlugin(
         # Riavvio al mattino
         if (
             self._settings.get(["pauseenabled"]) == True and
-            self._settings.get(["pauseday"]) == hr and
+            self._settings.get(["pauseday"]) == str(hr) and
             state == "PAUSED"
         ):
             self._printer.resume_print()
@@ -126,7 +123,7 @@ class JobSchedulerPlugin(
         # Sospensione alla sera
         if (
             self._settings.get(["pauseenabled"]) == True and
-            self._settings.get(["pausenight"]) == hr and
+            self._settings.get(["pausenight"]) == str(hr) and
             state == "PRINTING"
         ):
             self._printer.pause_print()
