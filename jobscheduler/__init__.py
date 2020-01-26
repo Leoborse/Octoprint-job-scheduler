@@ -100,7 +100,7 @@ class JobSchedulerPlugin(
         hr = now.hour
         state = self._printer.get_state_id()
         msg = state + " " + str(now)
-        self.._logger.info(msg)
+        self._logger.info(msg)
 
         # Avvio all'ora prevista
         if (
