@@ -14,7 +14,8 @@ class JobSchedulerPlugin(
         octoprint.plugin.SettingsPlugin,
         octoprint.plugin.AssetPlugin,
         octoprint.plugin.EventHandlerPlugin,
-        octoprint.plugin.ProgressPlugin
+        octoprint.plugin.ProgressPlugin,
+        octoprint.plugin.SimpleApiPlugin
         ):
 
     def get_settings_defaults(self):
@@ -42,6 +43,26 @@ class JobSchedulerPlugin(
             less=[]
 		)
 
+    def get_api_commands(self):
+        return dict(
+            telegram_bot_info=[],
+            telegram_bot_chat=["chat_id"]
+        )
+
+    def on_api_command(self, command, data):
+        response = "{}"
+        if command == "telegram_bot_chat":
+            parameter = "unset"
+            if "parameter" in data:
+                parameter = "set"
+            self._logger.info("command1 called, parameter is {parameter}".format(**locals()))
+        elif command == "telegram_bot_info":
+            response = self.telegram_bot_info().json()
+        return flask.jsonify(response)
+
+    def on_api_get(self, request):
+        return flask.jsonify(foo="bar")
+
     def telegram(self,msg):
         response = "disabled"
         if (self._settings.get(["telegramenabled"])):
@@ -58,7 +79,7 @@ class JobSchedulerPlugin(
         url="https://api.telegram.org/bot"+token+"/getMe"
         response = requests.get(url)
         self._logger.info("Job Scheduler! Telegram bot info: "+str(response.json()['result']['first_name']))
-        return response
+        return response.json()
 
     def on_event(self, event, payload):
         if ( event.startswith('Print') ):
@@ -72,7 +93,6 @@ class JobSchedulerPlugin(
         return
 
     def checkjob(self):
-        self.telegram_bot_info()
         now = datetime.now()
         hr = now.hour
         state = self._printer.get_state_id()
