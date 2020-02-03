@@ -49,8 +49,6 @@ class JobSchedulerPlugin(
             telegram_bot_chat=["chat_id"]
         )
 
-    # curl -H "X-Api-Key: 9DF4CEF9B41F42D1A0F95C4D4BDC6FD6" http://localhost:5000/api/plugin/jobscheduler
-
     def on_api_command(self, command, data):
         response = "{}"
         if command == "telegram_bot_chat":
@@ -81,13 +79,13 @@ class JobSchedulerPlugin(
         token  = self._settings.get(["telegramtoken"])
         url="https://api.telegram.org/bot"+token+"/getMe"
         response = requests.get(url)
-        self._logger.info("Job Scheduler! Telegram bot info: "+str(response.json()['result']['first_name']))
+        self._logger.info("Job Scheduler! Telegram bot info: "+str(response.json()))
         return response
 
     def on_event(self, event, payload):
         if ( event.startswith('Print') ):
             self._logger.info("Job Scheduler! Event: "+str(event))
-            self.telegram(str(event))
+            # self.telegram(str(event))
         return
 
     def on_print_progress(self, storage, path, progress):
