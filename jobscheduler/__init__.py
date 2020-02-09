@@ -22,6 +22,8 @@ class JobSchedulerPlugin(
         return dict(
             startenabled=True,
             starttime=7,
+            location="",
+            filename="",
             pauseenabled=True,
             pauseday=8,
             pausenight=21,
@@ -33,6 +35,7 @@ class JobSchedulerPlugin(
     def get_template_configs(self):
 		return [
 			dict(type="navbar", custom_bindings=False),
+			dict(type="tab", custom_bindings=False),
 			dict(type="settings", custom_bindings=False)
 		]
 
@@ -83,9 +86,20 @@ class JobSchedulerPlugin(
         return response
 
     def on_event(self, event, payload):
-        if ( event.startswith('Print') ):
-            self._logger.info("Job Scheduler! Event: "+str(event))
-            # self.telegram(str(event))
+        self._logger.info("Job Scheduler! Event: "+str(event))
+        if ( event == "FileSelected" ):
+            location = str(payload["origin"])
+            filename = str(payload["path"])
+            self._logger.info("Job Scheduler! Event: "+str(event)+", File: ",filename)
+            self._settings.set(["location"],location)
+            self._settings.set(["filename"],filename)
+            self._settings.setBoolean(["startenabled"],[True])
+            dat = dict(
+                loc=self._settings.get(["location"]),
+                fn=self._settings.get(["filename"])
+            )
+            self._logger.info("Job Scheduler! Data: "+str(dat))
+            self._settings.save()
         return
 
     def on_print_progress(self, storage, path, progress):

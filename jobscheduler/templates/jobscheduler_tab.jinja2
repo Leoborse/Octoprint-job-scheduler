@@ -1,0 +1,25 @@
+<h3 class="blu">Job scheduling and pausing over night</h3>
+
+<form class="form-horizontal">
+
+  <label class="checkbox">
+    <input type="checkbox" data-bind="checked: settings.plugins.jobscheduler.startenabled"/>
+    Scheduled print start
+  </label>
+  <div class="row-fluid jobscheduler">
+    <div class="span1"><i class="fa fa-play fa-2x right blu"></i></div>
+    <div class="span3">
+      <input type="text" class="span12" data-bind="value: settings.plugins.jobscheduler.starttime"/>
+    </div>
+  </div>
+
+  <div class="row-fluid jobscheduler">
+    <div class="span4">
+      <input type="text" class="span12" data-bind="value: settings.plugins.jobscheduler.location" readonly/>
+    </div>
+    <div class="span8">
+      <input type="text" class="span12" data-bind="value: settings.plugins.jobscheduler.filename" readonly/>
+    </div>
+  </div>
+
+</form>
